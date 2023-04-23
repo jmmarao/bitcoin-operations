@@ -1,8 +1,8 @@
-package br.com.core.operations.adapter.gateway.impl;
+package br.com.core.operations.external.gateway.impl;
 
-import br.com.core.operations.adapter.gateway.client.BitCoinGatewayClient;
-import br.com.core.operations.core.entity.coinbase.response.CoinBaseResponse;
-import br.com.core.operations.core.interfaces.gateway.BitCoinGateway;
+import br.com.core.operations.external.client.BitCoinGatewayClient;
+import br.com.core.operations.external.dto.CoinBaseResponse;
+import br.com.core.operations.external.gateway.BitCoinGateway;
 import feign.FeignException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

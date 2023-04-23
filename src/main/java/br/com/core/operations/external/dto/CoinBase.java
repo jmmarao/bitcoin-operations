@@ -1,20 +1,19 @@
-package br.com.core.operations.core.entity;
+package br.com.core.operations.external.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-@Getter
-@Setter
-@Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class Quotation implements Serializable {
+@NoArgsConstructor
+@Builder
+@Data
+public class CoinBase implements Serializable {
+    private String base;
     private String currency;
     private BigDecimal amount;
 }

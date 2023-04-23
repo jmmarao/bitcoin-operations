@@ -1,18 +1,16 @@
-package br.com.core.operations.core.entity.coinbase.response;
+package br.com.core.operations.external.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.io.Serializable;
 
-@Getter
-@Setter
-@Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Data
 public class CoinBaseResponse implements Serializable {
-    private CoinBaseResponseData data;
+    private CoinBase data;
 }
