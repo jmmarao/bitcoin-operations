@@ -6,10 +6,10 @@ import br.com.core.operations.external.gateway.BitCoinGateway;
 import feign.FeignException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 @Slf4j
-@Component
+@Repository
 @RequiredArgsConstructor
 public class BitCoinGatewayImpl implements BitCoinGateway {
 
