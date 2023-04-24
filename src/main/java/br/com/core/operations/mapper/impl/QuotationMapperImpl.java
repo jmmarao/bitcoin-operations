@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class QuotationMapperImpl implements QuotationMapper {
     @Override
-    public Quotation mapCoinBaseResponse(CoinBase coinBase) {
+    public Quotation mapCoinBase(CoinBase coinBase) {
         return Quotation.builder()
                 .valor(String.format("%.2f", coinBase.getAmount()))
                 .moeda(coinBase.getCurrency())

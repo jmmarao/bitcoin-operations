@@ -43,7 +43,7 @@ public class FindBitCoinQuotationUseCaseImpl implements FindBitCoinQuotationUseC
 
         List<Quotation> quotations = new ArrayList<>();
         for (CoinBaseResponse coinBaseResponse : coinBaseResponseList) {
-            quotations.add(quotationMapper.mapCoinBaseResponse(coinBaseResponse.getData()));
+            quotations.add(quotationMapper.mapCoinBase(coinBaseResponse.getData()));
         }
         return quotations;
     }
