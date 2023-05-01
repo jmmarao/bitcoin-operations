@@ -1,0 +1,12 @@
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: ${FEIGN_CONNECT_TIMEOUT_MS:5000}
+        readTimeout: ${FEIGN_READ_TIMEOUT_MS:10000}
+  okhttp:
+    enabled: true
+  rest:
+    bitcoin:
+      name: bitcoin-gateway
+      url: http://localhost:8888/

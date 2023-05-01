@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.cloud.contract.wiremock.WireMockSpring
+import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import spock.lang.Shared
@@ -15,6 +16,7 @@ import java.nio.charset.StandardCharsets
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@ActiveProfiles(profiles = "test")
 class QuotationControllerComponentSpec extends Specification {
 
     @Shared
@@ -52,15 +54,15 @@ class QuotationControllerComponentSpec extends Specification {
         //jsonNode.get("data").asText() == "2023-04-23T21:44:11"
         jsonNode.get("cotacoes").size() == 3
 
-//        verifyAll(jsonNode.get("cotacoes")) {
-//            get(0).get("valor").asText() == "27437,28"
-//            get(0).get("moeda").asText() == "USD"
-//
-//            get(1).get("valor").asText() == "138541,80"
-//            get(1).get("moeda").asText() == "BRL"
-//
-//            get(2).get("valor").asText() == "24990,73"
-//            get(2).get("moeda").asText() == "EUR"
-//        }
+        verifyAll(jsonNode.get("cotacoes")) {
+            get(0).get("valor").asText() == "28493,62"
+            get(0).get("moeda").asText() == "USD"
+
+            get(1).get("valor").asText() == "147538,42"
+            get(1).get("moeda").asText() == "BRL"
+
+            get(2).get("valor").asText() == "25950,03"
+            get(2).get("moeda").asText() == "EUR"
+        }
     }
 }
