@@ -1,8 +1,10 @@
 package br.com.core.operations.mapper;
 
-import br.com.core.operations.domain.Quotation;
-import br.com.core.operations.external.dto.CoinBase;
+import br.com.core.operations.domain.QuotationResponse;
+import br.com.core.operations.external.dto.CoinBaseResponse;
+
+import java.util.List;
 
 public interface QuotationMapper {
-    Quotation mapCoinBase(CoinBase coinBase);
+    QuotationResponse mapCoinBaseResponseList(List<CoinBaseResponse> coinBaseResponseList);
 }

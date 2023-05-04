@@ -30,4 +30,8 @@ class CoinBaseResponseFixture {
                 .build()
         return CoinBaseResponse.builder().data(coinBase).build()
     }
+
+    static List<CoinBaseResponse> getValidList() {
+        return Arrays.asList(getValidDollar(), getValidReal(), getValidEuro())
+    }
 }

@@ -30,10 +30,10 @@ public class BitCoinGatewayImpl implements BitCoinGateway {
         } catch (final FeignException feignException) {
             log.error(ERROR_FEIGN_MESSAGE, feignException.status(), feignException.request().url(),
                     feignException.contentUTF8(), feignException.getMessage());
-            throw new RuntimeException("Erro ao gerar um token no GACB", feignException);
+            throw new RuntimeException("[FeignException] ", feignException);
         } catch (final Exception e) {
             log.error(ERROR_EXCEPTION_MESSAGE, e.getMessage());
-            throw new RuntimeException("Erro genérico ao gerar um token GACB", e);
+            throw new RuntimeException("[Exception] ", e);
         }
     }
 }

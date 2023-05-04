@@ -3,7 +3,7 @@ package br.com.core.operations.usecase.impl
 import br.com.core.operations.external.dto.CoinBaseResponse
 import br.com.core.operations.external.gateway.BitCoinGateway
 import br.com.core.operations.fixture.CoinBaseResponseFixture
-import br.com.core.operations.fixture.QuotationFixture
+import br.com.core.operations.fixture.QuotationResponseFixture
 import br.com.core.operations.mapper.QuotationMapper
 import br.com.core.operations.usecase.FindBitCoinQuotationUseCase
 import spock.lang.Specification
@@ -35,9 +35,7 @@ class FindBitCoinQuotationUseCaseImplSpec extends Specification {
         1 * bitCoinGateway.getQuotation("EUR") >> eurResponse
 
         and: "Um mapeamento válido do retorno da API para cada tipo de moeda: USD, BRL, EUR"
-        1 * quotationMapper.mapCoinBase(usdResponse.data) >> QuotationFixture.getValidDollar()
-        1 * quotationMapper.mapCoinBase(brlResponse.data) >> QuotationFixture.getValidReal()
-        1 * quotationMapper.mapCoinBase(eurResponse.data) >> QuotationFixture.getValidEuro()
+        1 * quotationMapper.mapCoinBaseResponseList(Arrays.asList(usdResponse, brlResponse, eurResponse)) >> QuotationResponseFixture.getOneValid()
 
         when: "A função de buscar a cotação de dólar, real e euro for chamada"
         def quotations = findBitCoinQuotationUseCase.getQuotationForDollarRealAndEuro()

@@ -1,11 +1,13 @@
 package br.com.core.operations.mapper.impl
 
-import br.com.core.operations.fixture.CoinBaseFixture
+import br.com.core.operations.fixture.CoinBaseResponseFixture
 import br.com.core.operations.mapper.QuotationMapper
 import spock.lang.Specification
+import spock.lang.Subject
 
 class QuotationMapperImplSpec extends Specification {
 
+    @Subject
     private QuotationMapper quotationMapper
 
     def setup() {
@@ -13,16 +15,25 @@ class QuotationMapperImplSpec extends Specification {
     }
 
     def "Deve transformar o retorno da API em uma Quotation"() {
-        given: "Um CoinBase válido"
-        def coinBase = CoinBaseFixture.getOneValid()
+        given: "Uma lista de CoinBaseResponse válida"
+        def coinBaseResponseList = CoinBaseResponseFixture.getValidList()
 
         when: "Ao executar mapCoinBase"
-        def quotation = quotationMapper.mapCoinBase(coinBase)
+        def quotation = quotationMapper.mapCoinBaseResponseList(coinBaseResponseList)
 
         then: "Deve transformar o retorno da API em uma Quotation"
-        verifyAll(quotation) {
-            valor == "3,50"
-            moeda == "USD"
+        quotation.moedaBase == "bitcoin"
+//        quotation.data ==
+        quotation.cotacoes.size() == 3
+        verifyAll(quotation.cotacoes) {
+            get(0).valor == "3,50"
+            get(0).moeda == "USD"
+
+            get(1).valor == "5,75"
+            get(1).moeda == "BRL"
+
+            get(2).valor == "7,00"
+            get(2).moeda == "EUR"
         }
     }
 }

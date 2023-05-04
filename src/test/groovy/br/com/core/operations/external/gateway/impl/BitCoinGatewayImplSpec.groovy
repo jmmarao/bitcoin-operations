@@ -54,7 +54,7 @@ class BitCoinGatewayImplSpec extends Specification {
 
         then: "Deve retornar uma"
         def exception = thrown(RuntimeException)
-        exception.getMessage() == "Erro ao gerar um token no GACB"
+        exception.getMessage() == "[FeignException] "
     }
 
     def "Deve lançar uma RuntimeException ao informar uma moeda inválida"() {
@@ -69,6 +69,6 @@ class BitCoinGatewayImplSpec extends Specification {
 
         then: "Deve lançar uma RuntimeException com a mensagem de erro esperada"
         def ex = thrown(RuntimeException)
-        ex.message == "Erro genérico ao gerar um token GACB"
+        ex.message == "[Exception] "
     }
 }
